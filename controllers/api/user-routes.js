@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
-//const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 //---USER GET ROUTE - FIND ALL---//
 router.get('/', (req, res) => {
@@ -114,7 +114,7 @@ router.post('/logout', (req, res) => {
 });
 
 //---USER PUT ROUTE - UPDATE USER---//
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   // expects {username: '', email: '', password: ''}
   // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
   User.update(req.body, {
@@ -137,7 +137,7 @@ router.put('/:id', (req, res) => {
 });
 
 //---USER DELETE ROUTE - DELETE USER---//
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   User.destroy({
     where: {
       id: req.params.id

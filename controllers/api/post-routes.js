@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
-//const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 //---POST GET ROUTE - FIND ALL---//
 router.get('/', (req, res) => {
@@ -67,7 +67,7 @@ router.get('/:id', (req, res) => {
 });
 
 //---POST POST ROUTE - ADD BLOG POST---//
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     post_content: req.body.post_content,
@@ -81,7 +81,7 @@ router.post('/', (req, res) => {
 });
 
 //---POST PUT ROUTE - UPDATE BLOG POST---//
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   Post.update(
     req.body,
     {
@@ -104,7 +104,7 @@ router.put('/:id', (req, res) => {
 });
 
 //---POST DELETE ROUTE - DELETE BLOG POST---//
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id
