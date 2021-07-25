@@ -1,0 +1,20 @@
+{
+  "name": "thetechblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamwalab/theTechBlog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamwalab/theTechBlog/issues"
+  },
+  "homepage": "https://github.com/jamwalab/theTechBlog#readme"
+}
