@@ -31,12 +31,9 @@ router.get('/', (req, res) => {
     //Convert line breals to array
     const postsData = dbPostData.map(post => post.get({ plain: true }));
     const posts = postsData.map(post => {
-      let temp = post.post_content.split("<br />");
-      //let temp = post.post_content.replace(/<br />/g, '');
+      let temp = post.post_content.split("\n");
       post.post_content = []
       post.post_content.push(temp[0].split(" ").splice(0, 50).join(" "));
-      //post.post_content = temp;
-      console.log(post)
       return post;
     });
 
@@ -86,7 +83,7 @@ router.get('/post/:id', (req, res) => {
     //const post = dbPostData.get({ plain: true });
     //Convert line breals to array
     const post = dbPostData.get({ plain: true });
-    let temp = post.post_content.split("<br />");
+    let temp = post.post_content.split("\n");
     post.post_content = temp;
 
     //pass data to the template
