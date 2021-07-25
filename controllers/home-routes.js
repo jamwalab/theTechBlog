@@ -27,7 +27,19 @@ router.get('/', (req, res) => {
   })
   .then(dbPostData => {
     // pass a single post object into the homepage template
-    const posts = dbPostData.map(post => post.get({plain: true}));
+    //const posts = dbPostData.map(post => post.get({plain: true}));
+    //Convert line breals to array
+    const postsData = dbPostData.map(post => post.get({ plain: true }));
+    const posts = postsData.map(post => {
+      let temp = post.post_content.split("<br />");
+      //let temp = post.post_content.replace(/<br />/g, '');
+      post.post_content = []
+      post.post_content.push(temp[0].split(" ").splice(0, 50).join(" "));
+      //post.post_content = temp;
+      console.log(post)
+      return post;
+    });
+
     res.render('homepage', {
       posts,
       loggedIn: req.session.loggedIn
@@ -71,7 +83,12 @@ router.get('/post/:id', (req, res) => {
       return;
     }
     // serialize the data
+    //const post = dbPostData.get({ plain: true });
+    //Convert line breals to array
     const post = dbPostData.get({ plain: true });
+    let temp = post.post_content.split("<br />");
+    post.post_content = temp;
+
     //pass data to the template
     res.render('single-post', {
       post,

@@ -32,7 +32,12 @@ router.get('/', withAuth, (req, res) => {
   })
     .then(dbPostData => {
       // serialize data before passing to template
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+      const postsData = dbPostData.map(post => post.get({ plain: true }));
+      const posts = postsData.map(post => {
+        let temp = post.post_content.split("<br />");
+        post.post_content = temp;
+        return post;
+      })
       const theuser = req.session.username
       console.log({ posts, theusero: false, loggedIn: true })
       res.render('dashboard', { posts, loggedIn: true, theuser });

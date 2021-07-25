@@ -53,8 +53,9 @@ textarea:focus, input:focus {
 }
 
 textarea {
+  width: 100%;
   min-width: 40%;
-  min-height: 100px;
+  min-height: 130px;
 }
 
 form > div {
@@ -75,7 +76,7 @@ form label {
 }
 
 header {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -83,7 +84,7 @@ header {
 }
 
 header h1 {
-  font-size: 1em;
+  font-size: 1.3em;
 }
 
 main {
@@ -162,7 +163,7 @@ main {
 }
 
 .new-post-form input {
-  width: 300px;
+  width: 100%;
 }
 
 .edit-post-form {
@@ -175,4 +176,13 @@ footer {
   justify-content: center;
   padding: 1%;
   font-size: 110%;
+}
+
+.loginAlert {
+  color: red;
+  display: none;
+}
+
+h2, h3 {
+  margin: 15px 0;
 }
