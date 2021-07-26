@@ -34,7 +34,7 @@ Testing is available for the helper functions.
 * To login, click on the login button and enter your _username_ and _password_.
 * If you don't have an account, click signup and enter username, password and email address.
 
-![Login](./assets/images/login.PNG)
+![Login](./assets/images/login.png)
 
 * Once logged in, user can access dash board to create new posts and edit or delete existing ones.
 * User also has the option to add comments on blog posts.
